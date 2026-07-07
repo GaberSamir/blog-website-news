@@ -1,0 +1,260 @@
+// ==========================================================================
+// Custom Bootstrap Variables Overrides
+// ==========================================================================
+
+// Color Palette
+$primary:       #6366f1; // Premium Indigo
+$success:       #10b981; // Emerald Green
+$warning:       #f59e0b; // Amber Yellow
+$danger:        #ef4444; // Rose Red
+$dark:          #0f172a; // Slate 900
+$light:         #f8fafc; // Slate 50
+$body-bg:       #f1f5f9; // Slate 100 for a clean background
+$body-color:    #334155; // Slate 700 for softer text readability
+
+// Typography
+$font-family-sans-serif: 'Outfit', 'Inter', system-ui, -apple-system, sans-serif;
+
+// Component Customizations
+$border-radius:        0.5rem;
+$border-radius-lg:     1rem;
+$border-radius-sm:     0.375rem;
+
+// Cards
+$card-border-width:     0;
+$card-border-radius:    $border-radius-lg;
+$card-bg:               #ffffff;
+$card-cap-bg:           transparent;
+
+// Buttons
+$btn-padding-y:         0.625rem;
+$btn-padding-x:         1.25rem;
+$btn-font-weight:       500;
+$btn-border-radius:     $border-radius;
+$btn-focus-width:       0.2rem;
+
+// Gradients & Shadows
+$enable-gradients:      false;
+$enable-shadows:        true;
+
+// ==========================================================================
+// Import Bootstrap SCSS
+// ==========================================================================
+@import "../node_modules/bootstrap/scss/bootstrap";
+
+// ==========================================================================
+// Custom Customizations & Micro-Animations
+// ==========================================================================
+
+// Premium Custom Card Styling
+.custom-card {
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.7) !important;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(10px);
+
+  &:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 25px -5px rgba(99, 102, 241, 0.1), 0 8px 10px -6px rgba(99, 102, 241, 0.1);
+  }
+
+  .overflow-hidden {
+    border-top-left-radius: inherit;
+    border-top-right-radius: inherit;
+  }
+
+  .card-img-top {
+    border-top-left-radius: calc(#{$border-radius-lg} - 1px);
+    border-top-right-radius: calc(#{$border-radius-lg} - 1px);
+    transition: transform 0.5s ease;
+  }
+
+  &:hover .card-img-top {
+    transform: scale(1.03);
+  }
+}
+
+// Custom Glassmorphism Navbar
+.premium-navbar {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  
+  .navbar-brand {
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    background: linear-gradient(135deg, $primary, #4f46e5);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .nav-link {
+    font-weight: 500;
+    color: $body-color;
+    transition: color 0.2s ease;
+
+    &:hover, &.active {
+      color: $primary;
+    }
+  }
+}
+
+// Hero Section Gradient
+.hero-gradient {
+  background: radial-gradient(circle at top right, rgba(99, 102, 241, 0.1), transparent 50%),
+              radial-gradient(circle at bottom left, rgba(16, 185, 129, 0.05), transparent 50%);
+  padding: 5rem 0;
+}
+
+// Footer Social Icons Hover Transition
+footer {
+  .hover-primary {
+    display: inline-block;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    
+    &:hover {
+      color: $primary !important;
+      opacity: 1 !important;
+      transform: translateY(-3px);
+    }
+  }
+}
+
+// English font override when lang is en
+html[lang="en"] {
+  body, h1, h2, h3, h4, h5, h6, .nav-link, .btn {
+    font-family: 'Outfit', 'Inter', system-ui, sans-serif !important;
+  }
+
+  // Flip direction-based icons in English/LTR mode
+  .fa-chevron-left, .fa-arrow-left, .fa-arrow-right {
+    transform: scaleX(-1);
+    display: inline-block;
+  }
+}
+
+// Article Page Content Styling
+.article-content {
+  p {
+    font-size: 1.15rem;
+    line-height: 2;
+    color: #475569;
+    margin-bottom: 1.8rem;
+  }
+}
+
+.article-blockquote {
+  border-inline-start: 5px solid #6366f1;
+  padding: 1.5rem;
+  background-color: #f8fafc;
+  font-style: italic;
+  font-size: 1.25rem;
+  margin: 2.5rem 0;
+  
+  border-start-start-radius: 0;
+  border-end-start-radius: 0;
+  border-start-end-radius: 0.5rem;
+  border-end-end-radius: 0.5rem;
+}
+
+
+// Premium Dark Mode Styles
+[data-bs-theme="dark"] {
+  --bs-body-bg: #0b0f19; // Slate 950 deep premium dark blue
+  --bs-body-color: #cbd5e1; // Slate 300 soft text
+  --bs-card-bg: rgba(15, 23, 42, 0.6); // Slate 900 transparent
+  --bs-tertiary-bg: #1e293b; // Slate 800
+  --bs-border-color: rgba(255, 255, 255, 0.08);
+
+  .text-dark {
+    color: #f8fafc !important; // Slate 50 for dark text in dark mode
+  }
+  
+  .text-muted {
+    color: #94a3b8 !important; // Slate 400
+  }
+
+  .custom-card {
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    background: rgba(15, 23, 42, 0.6);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+    
+    &:hover {
+      box-shadow: 0 20px 25px -5px rgba(99, 102, 241, 0.25), 0 8px 10px -6px rgba(99, 102, 241, 0.25);
+    }
+  }
+
+  .premium-navbar {
+    background: rgba(11, 15, 25, 0.75);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    
+    .navbar-toggler-icon {
+      filter: invert(1); // Ensure white hamburger menu in dark mode
+    }
+  }
+
+  .bg-white {
+    background-color: #0f172a !important; // Slate 900
+  }
+
+  .bg-light {
+    background-color: #1e293b !important; // Slate 800
+  }
+
+  .border-top, .border-bottom, .border-light {
+    border-color: rgba(255, 255, 255, 0.08) !important;
+  }
+
+  .hero-gradient {
+    background: radial-gradient(circle at top right, rgba(99, 102, 241, 0.15), transparent 50%),
+                radial-gradient(circle at bottom left, rgba(16, 185, 129, 0.08), transparent 50%);
+  }
+
+  .article-content {
+    p {
+      color: #cbd5e1;
+    }
+  }
+
+  .article-blockquote {
+    background-color: #0f172a;
+    border-inline-start-color: #6366f1;
+  }
+
+  .card-body, .card {
+    color: #cbd5e1;
+  }
+  
+  .form-control {
+    background-color: #1e293b !important;
+    color: #f8fafc !important;
+    border-color: rgba(255, 255, 255, 0.08) !important;
+    
+    &:focus {
+      background-color: #1e293b !important;
+      color: #f8fafc !important;
+      border-color: #6366f1 !important;
+    }
+  }
+
+  .btn-outline-dark {
+    color: #f8fafc !important;
+    border-color: #f8fafc !important;
+    
+    &:hover {
+      background-color: #f8fafc !important;
+      color: #0f172a !important;
+    }
+  }
+
+  .btn-link.text-dark {
+    color: #f8fafc !important;
+  }
+  
+  .contact-info-card {
+    background: rgba(15, 23, 42, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+}

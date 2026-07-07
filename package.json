@@ -1,0 +1,12 @@
+{
+  "scripts": {
+    "build": "node node_modules/sass/sass.js scss/style.scss style.css --quiet-deps",
+    "watch": "node node_modules/sass/sass.js scss/style.scss style.css --watch --quiet-deps"
+  },
+  "dependencies": {
+    "bootstrap": "^5.3.8"
+  },
+  "devDependencies": {
+    "sass": "^1.101.0"
+  }
+}
