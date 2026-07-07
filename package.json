@@ -1,8 +1,15 @@
 {
+  "name": "blog-website-news",
+  "version": "1.0.0",
+  "description": "A modern, responsive blog website built with HTML, CSS, JavaScript, and Bootstrap",
+  "main": "index.html",
   "scripts": {
     "build": "node node_modules/sass/sass.js scss/style.scss style.css --quiet-deps",
     "watch": "node node_modules/sass/sass.js scss/style.scss style.css --watch --quiet-deps"
   },
+  "keywords": ["blog", "html", "css", "javascript", "bootstrap"],
+  "author": "GaberSamir",
+  "license": "MIT",
   "dependencies": {
     "bootstrap": "^5.3.8"
   },
@@ -10,3 +17,4 @@
     "sass": "^1.101.0"
   }
 }
+
