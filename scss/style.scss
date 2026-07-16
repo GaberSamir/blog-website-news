@@ -46,6 +46,16 @@ $enable-shadows:        true;
 // Custom Customizations & Micro-Animations
 // ==========================================================================
 
+// Default (Arabic/RTL) font stack. The html[lang="en"] block below overrides it.
+body, h1, h2, h3, h4, h5, h6, .nav-link, .btn {
+  font-family: 'Tajawal', 'Outfit', sans-serif !important;
+}
+
+// Extra bold utility used across hero/section headings.
+.fw-extrabold {
+  font-weight: 800 !important;
+}
+
 // Premium Custom Card Styling
 .custom-card {
   transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
@@ -160,6 +170,19 @@ html[lang="en"] {
 }
 
 
+// Contact Page Info Card
+.contact-info-card {
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(10px);
+}
+
+// Privacy Page Content Styling
+.privacy-content p {
+  line-height: 1.8;
+  color: #475569;
+}
+
 // Premium Dark Mode Styles
 [data-bs-theme="dark"] {
   --bs-body-bg: #0b0f19; // Slate 950 deep premium dark blue
@@ -216,6 +239,10 @@ html[lang="en"] {
     p {
       color: #cbd5e1;
     }
+  }
+
+  .privacy-content p {
+    color: #cbd5e1;
   }
 
   .article-blockquote {
