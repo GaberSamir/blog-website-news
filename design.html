@@ -86,64 +86,14 @@
     
     <!-- Main Compiled CSS -->
     <link rel="stylesheet" href="style.css">
-    
-    <style>
-        body, h1, h2, h3, h4, h5, h6, .nav-link, .btn {
-            font-family: 'Tajawal', 'Outfit', sans-serif !important;
-        }
-    </style>
 </head>
 <body>
 
-    <!-- Premium Glassmorphic Navbar -->
-    <nav class="navbar navbar-expand-lg premium-navbar sticky-top py-3">
-        <div class="container">
-            <a class="navbar-brand fs-3 fw-bold" href="index.html"><i class="fa-solid fa-heart-pulse text-primary me-2"></i><span data-i18n="nav-brand">نبض اليوم</span></a>
-            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0 pe-0">
-                    <li class="nav-item">
-                        <a class="nav-link px-3" href="index.html"><i class="fa-solid fa-house me-1"></i><span data-i18n="nav-home">الرئيسية</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link px-3" href="technology.html"><i class="fa-solid fa-laptop-code me-1"></i><span data-i18n="nav-tech">تكنولوجيا</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link px-3" href="travel.html"><i class="fa-solid fa-plane-departure me-1"></i><span data-i18n="nav-travel">السياحة والسفر</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active px-3" aria-current="page" href="design.html"><i class="fa-solid fa-palette me-1"></i><span data-i18n="nav-design">التصميم والفنون</span></a>
-                    </li>
-                </ul>
-                <form class="d-flex align-items-center mb-2 mb-lg-0" role="search">
-                    <div class="input-group">
-                        <input class="form-control bg-light border-0" type="search" placeholder="ابحث عن مقال..." aria-label="ابحث عن مقال" data-i18n-placeholder="nav-search-placeholder">
-                        <button class="btn btn-primary" type="submit" aria-label="بحث"><i class="fa-solid fa-magnifying-glass me-1"></i><span data-i18n="nav-search-btn">بحث</span></button>
-                    </div>
-                </form>
-                <div class="d-flex align-items-center gap-2 ms-lg-3">
-                    <button class="btn btn-link text-dark p-2" id="darkModeToggle" aria-label="Toggle dark mode">
-                        <i class="fa-solid fa-moon fs-5"></i>
-                    </button>
-                    <button class="btn btn-outline-primary btn-sm px-3 rounded-pill" id="langToggle" aria-label="Toggle language">
-                        EN
-                    </button>
-                </div>
-            </div>
-        </div>
-    </nav>
+    <!-- Shared Navbar (rendered by components.js) -->
+    <div data-include="navbar"></div>
 
-    <!-- Breadcrumb Navigation -->
-    <nav aria-label="مسار التنقل" class="bg-light border-bottom">
-        <div class="container py-2">
-            <ol class="breadcrumb mb-0 small">
-                <li class="breadcrumb-item"><a href="index.html" class="text-decoration-none"><i class="fa-solid fa-house me-1"></i>الرئيسية</a></li>
-                <li class="breadcrumb-item active" aria-current="page">التصميم والفنون</li>
-            </ol>
-        </div>
-    </nav>
+    <!-- Shared Breadcrumb (rendered by components.js) -->
+    <div data-include="breadcrumb" data-current="التصميم والفنون"></div>
 
     <!-- Header Section -->
     <header class="hero-gradient py-5">
@@ -256,35 +206,11 @@
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="bg-dark text-white py-5">
-        <div class="container">
-            <div class="row align-items-center justify-content-between">
-                <div class="col-md-4 text-center text-md-start mb-3 mb-md-0">
-                    <span class="fs-4 fw-bold"><i class="fa-solid fa-heart-pulse text-primary me-2"></i><span data-i18n="nav-brand">نبض اليوم</span></span>
-                    <p class="text-muted mt-2 small" data-i18n="footer-desc">كل ما يهمك معرفته من أخبار وتطورات حول العالم بتصميم راقٍ وتجربة تصفح فريدة.</p>
-                    <div class="d-flex justify-content-center justify-content-md-start gap-3 mt-3">
-                        <a href="#" class="text-white opacity-75 hover-primary fs-5" aria-label="تويتر"><i class="fa-brands fa-x-twitter"></i></a>
-                        <a href="#" class="text-white opacity-75 hover-primary fs-5" aria-label="فيسبوك"><i class="fa-brands fa-facebook-f"></i></a>
-                        <a href="#" class="text-white opacity-75 hover-primary fs-5" aria-label="إنستغرام"><i class="fa-brands fa-instagram"></i></a>
-                        <a href="#" class="text-white opacity-75 hover-primary fs-5" aria-label="لينكد إن"><i class="fa-brands fa-linkedin-in"></i></a>
-                    </div>
-                </div>
-                <div class="col-md-4 text-center mb-3 mb-md-0">
-                    <div class="d-flex justify-content-center gap-3">
-                        <a href="index.html" class="text-white text-decoration-none small" data-i18n="nav-home">الرئيسية</a>
-                        <span class="text-muted">|</span>
-                        <a href="privacy.html" class="text-white text-decoration-none small" data-i18n="footer-privacy">سياسة الخصوصية</a>
-                        <span class="text-muted">|</span>
-                        <a href="contact.html" class="text-white text-decoration-none small" data-i18n="footer-contact">اتصل بنا</a>
-                    </div>
-                </div>
-                <div class="col-md-4 text-center text-md-end text-muted small" data-i18n="footer-rights">
-                    جميع الحقوق محفوظة &copy; 2026 منصة نبض اليوم.
-                </div>
-            </div>
-        </div>
-    </footer>
+    <!-- Shared Footer (rendered by components.js) -->
+    <div data-include="footer"></div>
+
+    <!-- Shared Layout Components -->
+    <script src="components.js"></script>
 
     <!-- Translation & Dark Mode Script -->
     <script src="translate.js"></script>

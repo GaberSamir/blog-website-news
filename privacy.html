@@ -55,99 +55,14 @@
     
     <!-- Main Compiled CSS -->
     <link rel="stylesheet" href="style.css">
-    
-    <style>
-        body, h1, h2, h3, h4, h5, h6, .nav-link, .btn {
-            font-family: 'Tajawal', 'Outfit', sans-serif !important;
-        }
-        .privacy-content p {
-            line-height: 1.8;
-            color: #475569;
-        }
-        [data-bs-theme=dark] .privacy-content p {
-            color: #cbd5e1;
-        }
-
-        /* Custom utility: extra bold font weight */
-        .fw-extrabold {
-            font-weight: 800 !important;
-        }
-
-        /* Custom utility: social hover effect */
-        .hover-primary {
-            transition: color 0.3s ease, transform 0.3s ease;
-        }
-        .hover-primary:hover {
-            color: var(--bs-primary) !important;
-            transform: translateY(-2px);
-        }
-
-        /* Premium glassmorphic navbar */
-        .premium-navbar {
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(0, 0, 0, 0.06);
-            transition: background 0.3s ease;
-        }
-        [data-bs-theme=dark] .premium-navbar {
-            background: rgba(15, 23, 42, 0.9);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-        }
-
-        /* Hero gradient background */
-        .hero-gradient {
-            background: linear-gradient(135deg, #f0f4ff 0%, #e8f0fe 50%, #f5f0ff 100%);
-            position: relative;
-        }
-        [data-bs-theme=dark] .hero-gradient {
-            background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #0f172a 100%);
-        }
-    </style>
 </head>
 <body>
 
-    <!-- Premium Glassmorphic Navbar -->
-    <nav class="navbar navbar-expand-lg premium-navbar sticky-top py-3">
-        <div class="container">
-            <a class="navbar-brand fs-3 fw-bold" href="index.html"><i class="fa-solid fa-heart-pulse text-primary me-2"></i>نبض اليوم</a>
-            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0 pe-0">
-                    <li class="nav-item">
-                        <a class="nav-link px-3" href="index.html"><i class="fa-solid fa-house me-1"></i>الرئيسية</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link px-3" href="technology.html"><i class="fa-solid fa-laptop-code me-1"></i>تكنولوجيا</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link px-3" href="travel.html"><i class="fa-solid fa-plane-departure me-1"></i>السياحة والسفر</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link px-3" href="design.html"><i class="fa-solid fa-palette me-1"></i>التصميم والفنون</a>
-                    </li>
-                </ul>
-                <form class="d-flex align-items-center" role="search">
-                    <div class="input-group">
-                        <input class="form-control bg-light border-0" type="search" placeholder="ابحث عن مقال..." aria-label="ابحث عن مقال">
-                        <button class="btn btn-primary" type="submit" aria-label="بحث"><i class="fa-solid fa-magnifying-glass me-1"></i>بحث</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </nav>
+    <!-- Shared Navbar (rendered by components.js) -->
+    <div data-include="navbar"></div>
 
-    <!-- Breadcrumb Navigation -->
-    <nav aria-label="مسار التنقل" class="bg-light border-bottom">
-        <div class="container py-2">
-            <ol class="breadcrumb mb-0 small">
-                <li class="breadcrumb-item"><a href="index.html" class="text-decoration-none"><i class="fa-solid fa-house me-1"></i>الرئيسية</a></li>
-                <li class="breadcrumb-item active" aria-current="page">سياسة الخصوصية</li>
-            </ol>
-        </div>
-    </nav>
+    <!-- Shared Breadcrumb (rendered by components.js) -->
+    <div data-include="breadcrumb" data-current="سياسة الخصوصية"></div>
 
     <!-- Header Section -->
     <header class="hero-gradient py-5">
@@ -190,38 +105,14 @@
         </div>
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-dark text-white py-5">
-        <div class="container">
-            <div class="row align-items-center justify-content-between">
-                <div class="col-md-4 text-center text-md-start mb-3 mb-md-0">
-                    <span class="fs-4 fw-bold"><i class="fa-solid fa-heart-pulse text-primary me-2"></i>نبض اليوم</span>
-                    <p class="text-muted mt-2 small">كل ما يهمك معرفته من أخبار وتطورات حول العالم بتصميم راقٍ وتجربة تصفح فريدة.</p>
-                    <div class="d-flex justify-content-center justify-content-md-start gap-3 mt-3">
-                        <a href="#" class="text-white opacity-75 hover-primary fs-5" aria-label="تويتر"><i class="fa-brands fa-x-twitter"></i></a>
-                        <a href="#" class="text-white opacity-75 hover-primary fs-5" aria-label="فيسبوك"><i class="fa-brands fa-facebook-f"></i></a>
-                        <a href="#" class="text-white opacity-75 hover-primary fs-5" aria-label="إنستغرام"><i class="fa-brands fa-instagram"></i></a>
-                        <a href="#" class="text-white opacity-75 hover-primary fs-5" aria-label="لينكد إن"><i class="fa-brands fa-linkedin-in"></i></a>
-                    </div>
-                </div>
-                <div class="col-md-4 text-center mb-3 mb-md-0">
-                    <div class="d-flex justify-content-center gap-3">
-                        <a href="index.html" class="text-white text-decoration-none small">الرئيسية</a>
-                        <span class="text-muted">|</span>
-                        <a href="privacy.html" class="text-white text-decoration-none small" aria-current="page"><strong>سياسة الخصوصية</strong></a>
-                        <span class="text-muted">|</span>
-                        <a href="contact.html" class="text-white text-decoration-none small">اتصل بنا</a>
-                    </div>
-                </div>
-                <div class="col-md-4 text-center text-md-end text-muted small">
-                    جميع الحقوق محفوظة &copy; 2026 منصة نبض اليوم.
-                </div>
-            </div>
-        </div>
-    </footer>
+    <!-- Shared Footer (rendered by components.js) -->
+    <div data-include="footer"></div>
 
     <!-- Bootstrap JS (must load before dependent scripts) -->
     <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Shared Layout Components -->
+    <script src="components.js"></script>
 
     <!-- Translation & Dark Mode Script -->
     <script src="translate.js"></script>
