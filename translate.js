@@ -429,3 +429,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 });
+
+// Expose the public API for testing in CommonJS environments (e.g. Jest).
+// In the browser this block is skipped and the script behaves as before.
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = { translations, setLanguage, setTheme };
+}
