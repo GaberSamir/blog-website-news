@@ -335,12 +335,42 @@ const translations = {
   }
 };
 
+// Safe localStorage access: storage can be unavailable or throw
+// (private mode, disabled cookies, sandboxed iframes, quota exceeded).
+// These helpers degrade gracefully instead of crashing the script,
+// while still surfacing the failure to the console for diagnostics.
+function safeStorageGet(key) {
+  try {
+    return localStorage.getItem(key);
+  } catch (err) {
+    console.warn(`Unable to read "${key}" from localStorage:`, err);
+    return null;
+  }
+}
+
+function safeStorageSet(key, value) {
+  try {
+    localStorage.setItem(key, value);
+  } catch (err) {
+    console.warn(`Unable to persist "${key}" to localStorage:`, err);
+  }
+}
+
+const supportedLangs = Object.keys(translations);
+const defaultLang = 'ar';
+
 // Initialize Language
-let currentLang = localStorage.getItem('site-lang') || 'ar';
+const storedLang = safeStorageGet('site-lang');
+let currentLang = supportedLangs.includes(storedLang) ? storedLang : defaultLang;
 
 function setLanguage(lang) {
+  if (!translations[lang]) {
+    console.warn(`Unsupported language "${lang}"; falling back to "${defaultLang}".`);
+    lang = defaultLang;
+  }
+
   currentLang = lang;
-  localStorage.setItem('site-lang', lang);
+  safeStorageSet('site-lang', lang);
   
   document.documentElement.setAttribute('lang', lang);
   document.documentElement.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
@@ -360,29 +390,35 @@ function setLanguage(lang) {
     langToggle.innerText = lang === 'ar' ? 'EN' : 'عربي';
   }
 
+  const dict = translations[lang];
+
   // Translate all tags with data-i18n
   document.querySelectorAll('[data-i18n]').forEach(elem => {
     const key = elem.getAttribute('data-i18n');
-    if (translations[lang] && translations[lang][key]) {
-      elem.innerHTML = translations[lang][key];
+    if (Object.prototype.hasOwnProperty.call(dict, key)) {
+      elem.innerHTML = dict[key];
+    } else {
+      console.warn(`Missing translation for key "${key}" in language "${lang}".`);
     }
   });
 
   // Translate placeholders
   document.querySelectorAll('[data-i18n-placeholder]').forEach(elem => {
     const key = elem.getAttribute('data-i18n-placeholder');
-    if (translations[lang] && translations[lang][key]) {
-      elem.setAttribute('placeholder', translations[lang][key]);
+    if (Object.prototype.hasOwnProperty.call(dict, key)) {
+      elem.setAttribute('placeholder', dict[key]);
+    } else {
+      console.warn(`Missing placeholder translation for key "${key}" in language "${lang}".`);
     }
   });
 }
 
 // Initialize Dark Mode
-let isDark = localStorage.getItem('site-theme') === 'dark';
+let isDark = safeStorageGet('site-theme') === 'dark';
 
 function setTheme(dark) {
   isDark = dark;
-  localStorage.setItem('site-theme', dark ? 'dark' : 'light');
+  safeStorageSet('site-theme', dark ? 'dark' : 'light');
   
   const html = document.documentElement;
   const toggleBtn = document.getElementById('darkModeToggle');
@@ -406,9 +442,20 @@ function setTheme(dark) {
 
 // Event Listeners on DOM Load
 document.addEventListener('DOMContentLoaded', () => {
-  // Set initial state
-  setLanguage(currentLang);
-  setTheme(isDark);
+  // Set initial state. Isolate failures so a problem applying the initial
+  // language/theme does not prevent the toggle listeners below from being
+  // attached (which would leave the controls permanently unresponsive).
+  try {
+    setLanguage(currentLang);
+  } catch (err) {
+    console.error('Failed to apply initial language:', err);
+  }
+
+  try {
+    setTheme(isDark);
+  } catch (err) {
+    console.error('Failed to apply initial theme:', err);
+  }
 
   // Setup Language switch event
   const langToggle = document.getElementById('langToggle');
